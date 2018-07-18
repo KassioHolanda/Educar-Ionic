@@ -38,4 +38,26 @@ export class TurmaProvider {
             }
         )
     }
+
+
+    carregarDisciplinasAPI() {
+        this.dataApi.getDisciplinas().subscribe(data => {
+                let listaDisciplinas: any[];
+                listaDisciplinas = (data as any);
+                console.log(listaDisciplinas);
+
+                for (var i = 0; i < listaDisciplinas.length; i++) {
+                    // this.turma = new Turma();
+                    console.log('disciplinaBd ' + i + ': ' + listaDisciplinas[i].descricao);
+                    // this.turma.nome_unidade = lista_turmas[i].descricao;
+                    this.database.criarDisciplina( listaDisciplinas[i].professor, listaDisciplinas[i].nome );
+                    console.log('disciplinaBd CRIADO -  ' + i + ': ' + listaDisciplinas[i].descricao);
+                    // (descricao, turno, unidade_id)
+                }
+            }
+            , error => {
+                console.log(error)
+            }
+        )
+    }
 }

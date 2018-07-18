@@ -28,6 +28,7 @@ export class CarregarBdProvider {
     carregarDadosParaBD() {
         this.usuarioProvider.carregarUsuariosAPI();
         this.unidadeProvider.carregarUnidadesAPI();
-        this.turmaProvider.carregarTurmasAPI()
+        this.turmaProvider.carregarTurmasAPI();
+        this.turmaProvider.carregarDisciplinasAPI();
     }
 }

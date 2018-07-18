@@ -36,6 +36,10 @@ export class DataApiProvider {
         return this.http.get('http://10.20.30.162:8000/api/turma')
     }
 
+    getDisciplinas() {
+        return this.http.get('http://10.20.30.162:8000/api/disciplina')
+    }
+
     getTurmasUnidade(unidade_id) {
         return this.http.get('http://10.20.30.162:8000/api/unidade/' + unidade_id)
     }

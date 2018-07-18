@@ -75,8 +75,6 @@ export class DatabaseProvider {
     }
 
 
-
-
     getTurmasBD() {
         return new Promise((resolve, reject) => {
             this.db.executeSql("SELECT * FROM turma;", []).then((data) => {
@@ -96,7 +94,6 @@ export class DatabaseProvider {
             })
         })
     }
-
 
     getTurmasUnidadeBD(unidade_id) {
         return new Promise((resolve, reject) => {

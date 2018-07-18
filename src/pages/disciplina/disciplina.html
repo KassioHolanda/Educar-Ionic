@@ -7,12 +7,17 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>disciplina</ion-title>
+    <ion-title>Disciplina</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-
+<ion-content>
+  <ion-item-group>
+    <ion-item-divider>Selecione a Disciplina</ion-item-divider>
+    <ion-item *ngFor="let item of listaDisciplinas" (click)='acessarAlunos(item)'>
+      {{ item.descricao }}
+    </ion-item>
+  </ion-item-group>
 </ion-content>

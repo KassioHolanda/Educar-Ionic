@@ -6,6 +6,7 @@ class Unidade {
     constructor(nome: String) {
         this._nome = nome;
         this._professores = new Array<any>()
+        this._turmas = new Array<any>()
     }
 
     addProfessor(professor: Usuario) {

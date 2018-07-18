@@ -18,6 +18,7 @@ import {UsuarioProvider} from '../providers/usuario/usuario';
 import {UnidadeProvider} from '../providers/unidade/unidade';
 import {CarregarBdProvider} from '../providers/carregar-bd/carregar-bd';
 import {TurmaProvider} from '../providers/turma/turma';
+import {DisciplinaPageModule} from "../pages/disciplina/disciplina.module";
 
 @NgModule({
     declarations: [
@@ -33,6 +34,7 @@ import {TurmaProvider} from '../providers/turma/turma';
         TurmaPageModule,
         HttpClientModule,
         RegisterPageModule,
+        DisciplinaPageModule,
 
     ],
     bootstrap: [IonicApp],
