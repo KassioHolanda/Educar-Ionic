@@ -37,6 +37,7 @@ export class DatabaseProvider {
                 db.executeSql("CREATE TABLE IF NOT EXISTS frequencia (id INTEGER PRIMARY KEY AUTOINCREMENT, aluno_id INT REFERENCES aluno(id), presente BOOLEAN, aula_id INT REFERENCES aula(id))", []);
                 db.executeSql("CREATE TABLE IF NOT EXISTS disciplina (id INTEGER PRIMARY KEY AUTOINCREMENT, professor_id INT REFERENCES professor(id), descricao VARCHAR(255))", []);
                 db.executeSql("CREATE TABLE IF NOT EXISTS unidadeprofessor (id INTEGER PRIMARY KEY AUTOINCREMENT, unidade_id INT REFERENCES unidade(id), professor_id INT REFERENCES professor(id))", []);
+                db.executeSql("CREATE TABLE IF NOT EXISTS notaaluno (id INTEGER PRIMARY KEY AUTOINCREMENT, aluno_id INT REFERENCES aluno(id), nota FLOAT NOT NULL, semestre VARCHAR(255), disciplina INT REFERENCES disciplina(id))", []);
                 this.isOpen = true;
             }).catch((error) => {
                 console.log('error')
@@ -143,11 +144,9 @@ export class DatabaseProvider {
         })
     }
 
-
     getAlunosBD() {
         return new Promise((resolve, reject) => {
             this.db.executeSql("SELECT * FROM aluno;", []).then((data) => {
-
                 if (data.rows.length > 0) {
                     for (var i = 0; i < data.rows.length; i++) {
                         this.alunos.push({
@@ -155,6 +154,25 @@ export class DatabaseProvider {
                             nome: data.rows.item(i).nome,
                             turma_id: data.rows.item(i).turma_id,
                         });
+                    }
+                }
+                resolve(this.alunos);
+            }, (error) => {
+                reject(error);
+            })
+        })
+    }
+
+    alunosTurma(turma_id) {
+        return new Promise((resolve, reject) => {
+            this.db.executeSql("SELECT * FROM aluno WHERE turma_id = ?;", [turma_id]).then((data) => {
+                if (data.rows.length > 0) {
+                    for (var i = 0; i < data.rows.length; i++) {
+                            this.alunos.push({
+                                id: data.rows.item(i).id,
+                                nome: data.rows.item(i).nome,
+                                turma_id: data.rows.item(i).turma_id,
+                            });
                     }
                 }
                 resolve(this.alunos);

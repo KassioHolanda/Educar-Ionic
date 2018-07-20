@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Platform } from "ionic-angular";
+import {HttpClient} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {Platform} from "ionic-angular";
 
 /*
   Generated class for the DataApiProvider provider.
@@ -14,7 +14,7 @@ export class DataApiProvider {
     basepath = '/api';
 
     constructor(public http: HttpClient,
-        private _platform: Platform) {
+                private _platform: Platform) {
         if (this._platform.is("cordova")) {
             this.basepath = 'http://10.20.30.162:8000';
         }
@@ -40,6 +40,10 @@ export class DataApiProvider {
         return this.http.get('http://10.20.30.162:8000/api/disciplina')
     }
 
+    getAlunos() {
+        return this.http.get('http://10.20.30.162:8000/api/aluno')
+    }
+
     getTurmasUnidade(unidade_id) {
         return this.http.get('http://10.20.30.162:8000/api/unidade/' + unidade_id)
     }
@@ -51,5 +55,4 @@ export class DataApiProvider {
     getDetalheAluno(aluno_id) {
         return this.http.get('http://10.20.30.162:8000/api/aluno/' + aluno_id)
     }
-
 }

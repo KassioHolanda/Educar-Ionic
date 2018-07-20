@@ -30,5 +30,6 @@ export class CarregarBdProvider {
         this.unidadeProvider.carregarUnidadesAPI();
         this.turmaProvider.carregarTurmasAPI();
         this.turmaProvider.carregarDisciplinasAPI();
+        this.turmaProvider.carregarAlunosAPI();
     }
 }

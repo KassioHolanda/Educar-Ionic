@@ -16,7 +16,7 @@
 <ion-content>
   <ion-item-group>
     <ion-item-divider>Selecione a Disciplina</ion-item-divider>
-    <ion-item *ngFor="let item of listaDisciplinas" (click)='acessarAlunos(item)'>
+    <ion-item *ngFor="let item of listaDisciplinas" (click)='acessarAulaPage(item)'>
       {{ item.descricao }}
     </ion-item>
   </ion-item-group>

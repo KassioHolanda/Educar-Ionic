@@ -1,13 +1,10 @@
 import {Component} from '@angular/core';
-import {Platform} from 'ionic-angular';
+import {AlertController, Platform} from 'ionic-angular';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
-
-import {HomePage} from '../pages/home/home';
 import {LoginPage} from "../pages/login/login";
 import {DatabaseProvider} from "../providers/database/database";
 import {DataApiProvider} from "../providers/data-api/data-api";
-import {UsuarioProvider} from "../providers/usuario/usuario";
 import {CarregarBdProvider} from "../providers/carregar-bd/carregar-bd";
 
 @Component({
@@ -17,6 +14,7 @@ export class MyApp {
     rootPage: any = LoginPage;
 
     constructor(platform: Platform, statusBar: StatusBar,
+                public alertCtrl: AlertController,
                 splashScreen: SplashScreen,
                 dbProvider: DatabaseProvider,
                 carregarBD: CarregarBdProvider,) {
@@ -24,7 +22,16 @@ export class MyApp {
             // Okay, so the platform is ready and our plugins are available.
             // Here you can do any higher level native things you might need.
 
-            carregarBD.carregarDadosParaBD();
+
+            // carregarBD.carregarDadosParaBD();
+            this.showAlert();
+
+
+
+            // dbProvider.getTodosUsuariosBD();
+            // dbProvider.getTodasUnidadesBD();
+            // dbProvider.getTurmasBD();
+            // dbProvider.getDisciplinasBD();
 
             statusBar.styleDefault();
             splashScreen.hide();
@@ -37,5 +44,14 @@ export class MyApp {
     //     splashScreen.hide();
     //     this.rootPage = LoginPage;
     // }
+
+    showAlert() {
+        const alert = this.alertCtrl.create({
+            title: 'Informação!',
+            subTitle: 'INFO!',
+            buttons: ['OK']
+        });
+        alert.present();
+    }
 }
 
