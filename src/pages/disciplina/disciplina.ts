@@ -23,12 +23,23 @@ export class DisciplinaPage {
 
     constructor(public navCtrl: NavController, public navParams: NavParams, public database: DatabaseProvider) {
         this.listaDisciplinas = new Array<any>();
-        this.turma = this.navParams.get('turma')
+        this.turma = this.navParams.get('turma');
+        this.database.getDisciplinasBD();
+        this.listaDisciplinas = this.database.getDisciplinas();
+    }
+
+    getItems(ev: any) {
+        this.listaDisciplinas = this.database.getDisciplinas();
+        const val = ev.target.value;
+        if (val && val.trim() != '') {
+            this.listaDisciplinas = this.listaDisciplinas.filter((item) => {
+                return (item.descricao.toLowerCase().indexOf(val.toLowerCase()) > -1);
+            })
+        }
     }
 
     ionViewDidLoad() {
-        this.database.getDisciplinasBD();
-        this.listaDisciplinas = this.database.getDisciplinas();
+
     }
 
     acessarAulaPage(disciplina) {

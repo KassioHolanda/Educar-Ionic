@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import {IonicPage, NavController, NavParams, ToastController} from 'ionic-angular';
 import {DatabaseProvider} from "../../providers/database/database";
 
 /**
@@ -18,7 +18,7 @@ export class AulaPage {
     public listaAlunos: Array<any>;
     public turma;
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, public database: DatabaseProvider) {
+    constructor(public navCtrl: NavController, public navParams: NavParams, public database: DatabaseProvider, public toast: ToastController) {
         this.listaAlunos = [];
         this.turma = this.navParams.get('turma');
     }
@@ -26,5 +26,9 @@ export class AulaPage {
     ionViewDidLoad() {
         this.database.alunosTurma(this.turma.id);
         this.listaAlunos = this.database.getAlunos();
+    }
+
+    salvarAula() {
+        this.toast.create({message: 'Aula Registrada...', duration: 3000, position: 'botton'}).present();
     }
 }

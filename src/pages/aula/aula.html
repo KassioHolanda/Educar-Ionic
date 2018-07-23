@@ -26,13 +26,16 @@
 
         <ion-list>
             <ion-item *ngFor="let item of listaAlunos">
+                <ion-avatar item-start>
+                    <img src="assets/images/avatar-ts-woody.png">
+                </ion-avatar>
                 <ion-label>{{ item.nome }}</ion-label>
                 <ion-toggle checked="true"></ion-toggle>
             </ion-item>
         </ion-list>
     </ion-item-group>
     <div padding>
-        <button block ion-button>Salvar Aula</button>
+        <button block ion-button (click)="salvarAula()">Salvar Aula</button>
     </div>
     <br><br>
 </ion-content>

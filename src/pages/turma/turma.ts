@@ -39,6 +39,16 @@ export class TurmaPage {
 
     }
 
+    getItems(ev: any) {
+        this.listaTurmas = this.database.geTurmas();
+        const val = ev.target.value;
+        if (val && val.trim() != '') {
+            this.listaTurmas = this.listaTurmas.filter((item) => {
+                return (item.descricao.toLowerCase().indexOf(val.toLowerCase()) > -1);
+            })
+        }
+    }
+
 
     acessarTurma(turma) {
         this.navCtrl.push(DisciplinaPage, {'turma': turma})

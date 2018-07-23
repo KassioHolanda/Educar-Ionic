@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
-import {IonicPage, NavController, NavParams} from 'ionic-angular';
-import { ModalController, Platform, ViewController } from 'ionic-angular';
+import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angular';
+import {ModalController, Platform, ViewController} from 'ionic-angular';
 
 
 /**
@@ -19,7 +19,10 @@ export class DadosalunoPage {
 
     public aluno;
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController) {
+    constructor(public navCtrl: NavController,
+                public navParams: NavParams,
+                public modalCtrl: ModalController,
+                public alertCtrl: AlertController) {
         this.aluno = this.navParams.get('aluno');
     }
 
@@ -27,5 +30,64 @@ export class DadosalunoPage {
 
     }
 
+    adicionarNota() {
+        const prompt = this.alertCtrl.create({
+            title: 'Nota',
+            message: "Adicionar nota do aluno!",
+            inputs: [
+                {
+                    name: 'bimestre',
+                    placeholder: 'Bimestre: '
+                },
+                {
+                    name: 'nota',
+                    placeholder: 'Nota: '
+                },
+            ],
+            buttons: [
+                {
+                    text: 'Cancelar',
+                    handler: data => {
+                        console.log('Cancel clicked');
+                    }
+                },
+                {
+                    text: 'Salvar',
+                    handler: data => {
+                        console.log('Saved clicked');
+                    }
+                }
+            ]
+        });
+        prompt.present();
+    }
+
+    adicionarOcorrencia() {
+        const prompt = this.alertCtrl.create({
+            title: 'Nota',
+            message: "Adicionar ocorrência ao aluno!",
+            inputs: [
+                {
+                    name: 'ocorrencia',
+                    placeholder: 'Ocorrência: '
+                },
+            ],
+            buttons: [
+                {
+                    text: 'Cancelar',
+                    handler: data => {
+                        console.log('Cancel clicked');
+                    }
+                },
+                {
+                    text: 'Salvar',
+                    handler: data => {
+                        console.log('Saved clicked');
+                    }
+                }
+            ]
+        });
+        prompt.present();
+    }
 
 }
