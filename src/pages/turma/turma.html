@@ -9,11 +9,11 @@
     <ion-navbar>
         <ion-title>Turma</ion-title>
     </ion-navbar>
-
 </ion-header>
 
 
 <ion-content>
+    <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
     <ion-item-group>
         <ion-item-divider>Turmas</ion-item-divider>
         <ion-item *ngFor="let item of listaTurmas" (click)='acessarTurma(item)'>

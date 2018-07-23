@@ -6,21 +6,12 @@
         <ion-title>Home</ion-title>
     </ion-toolbar>
 </ion-header>
-<ion-searchbar
-        [(ngModel)]="myInput"
-        [showCancelButton]="shouldShowCancel"
-        (ionInput)="onInput($event)"
-        (ionCancel)="onCancel($event)">
-</ion-searchbar>
 <ion-content>
-
-    <ion-content>
-        <ion-item-group>
-            <ion-item-divider>Minhas Escolas</ion-item-divider>
-            <ion-item *ngFor="let item of lista_unidades" (click)="acessarTurmas(item)">
-                {{ item.nome }}
-            </ion-item>
-        </ion-item-group>
-    </ion-content>
-
+    <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+    <ion-item-group>
+        <ion-item-divider>Minhas Escolas</ion-item-divider>
+        <ion-item *ngFor="let item of lista_unidades" (click)="acessarTurmas(item)">
+            {{ item.nome }}
+        </ion-item>
+    </ion-item-group>
 </ion-content>

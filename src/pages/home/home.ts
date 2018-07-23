@@ -18,6 +18,7 @@ export class HomePage {
 
     // model: Unidade;
     public lista_unidades: Array<any>;
+    searchQuery: string = '';
 
     // public lista_unidades_banco: any[] = [];
 
@@ -26,14 +27,32 @@ export class HomePage {
                 public dataProvider: DataApiProvider,
                 private toast: ToastController,
                 private unidadeProvider: UnidadeProvider,
-                public database: DatabaseProvider,) {
+                public database: DatabaseProvider,
+                ) {
 
         this.lista_unidades = new Array<any>();
 
     }
 
+    getItems(ev: any) {
+        // Reset items back to all of the items
+        this.lista_unidades = this.database.getUnidades();
+        // set val to the value of the searchbar
+        const val = ev.target.value;
+
+        // if the value is an empty string don't filter the items
+        if (val && val.trim() != '') {
+            this.lista_unidades = this.lista_unidades.filter((item) => {
+                return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
+            })
+        }
+    }
+
     ionViewDidEnter() {
         // this.carregarUnidadesBD();
+        // this.statusBar.overlaysWebView(true);
+        // this.statusBar.backgroundColorByHexString('#ffffff');
+
         this.database.getTodasUnidadesBD();
         this.lista_unidades = this.database.getUnidades()
     }

@@ -15,8 +15,8 @@
 
 <ion-content>
     <ion-item-group>
+        <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
         <ion-item-divider>Alunos da Turma</ion-item-divider>
-
         <ion-list>
             <ion-item *ngFor="let item of listaAlunos" (click)="dadosAluno(item)">
                 <ion-avatar item-start>

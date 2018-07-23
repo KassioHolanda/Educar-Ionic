@@ -20,7 +20,6 @@ import {CarregarBdProvider} from '../providers/carregar-bd/carregar-bd';
 import {TurmaProvider} from '../providers/turma/turma';
 import {DisciplinaPageModule} from "../pages/disciplina/disciplina.module";
 import {AulaPageModule} from "../pages/aula/aula.module";
-import {NotasPageModule} from "../pages/notas/notas.module";
 import {AlunosPageModule} from "../pages/alunos/alunos.module";
 import {TabsPage} from "../pages/tabs/tabs";
 import {DadosalunoPageModule} from "../pages/dadosaluno/dadosaluno.module";
@@ -43,7 +42,6 @@ import {DadosalunoPageModule} from "../pages/dadosaluno/dadosaluno.module";
         RegisterPageModule,
         DisciplinaPageModule,
         AulaPageModule,
-        NotasPageModule,
         AlunosPageModule,
         DadosalunoPageModule,
 

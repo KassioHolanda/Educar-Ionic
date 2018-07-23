@@ -6,18 +6,19 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Disciplina</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>Disciplina</ion-title>
+    </ion-navbar>
 
 </ion-header>
 
 
 <ion-content>
-  <ion-item-group>
-    <ion-item-divider>Selecione a Disciplina</ion-item-divider>
-    <ion-item *ngFor="let item of listaDisciplinas" (click)='acessarAulaPage(item)'>
-      {{ item.descricao }}
-    </ion-item>
-  </ion-item-group>
+    <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+    <ion-item-group>
+        <ion-item-divider>Selecione a Disciplina</ion-item-divider>
+        <ion-item *ngFor="let item of listaDisciplinas" (click)='acessarAulaPage(item)'>
+            {{ item.descricao }}
+        </ion-item>
+    </ion-item-group>
 </ion-content>
