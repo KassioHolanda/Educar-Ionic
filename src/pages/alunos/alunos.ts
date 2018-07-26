@@ -38,6 +38,16 @@ export class AlunosPage {
     dadosAluno(item) {
         this.navCtrl.push(DadosalunoPage, {'aluno' : item})
     }
+
+    getItems(ev: any) {
+        this.listaAlunos = this.database.getAlunos();
+        const val = ev.target.value;
+        if (val && val.trim() != '') {
+            this.listaAlunos = this.listaAlunos.filter((item) => {
+                return (item.nome.toLowerCase().indexOf(val.toLowerCase()) > -1);
+            })
+        }
+    }
 }
 
 

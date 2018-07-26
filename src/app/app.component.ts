@@ -2,16 +2,16 @@ import {Component} from '@angular/core';
 import {AlertController, Platform} from 'ionic-angular';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
-import {LoginPage} from "../pages/login/login";
 import {DatabaseProvider} from "../providers/database/database";
 import {DataApiProvider} from "../providers/data-api/data-api";
 import {CarregarBdProvider} from "../providers/carregar-bd/carregar-bd";
+import {LoginAppPage} from "../pages/login-app/login-app";
 
 @Component({
     templateUrl: 'app.html'
 })
 export class MyApp {
-    rootPage: any = LoginPage;
+    rootPage: any = LoginAppPage;
 
     constructor(platform: Platform, statusBar: StatusBar,
                 public alertCtrl: AlertController,
@@ -24,7 +24,6 @@ export class MyApp {
 
 
             // carregarBD.carregarDadosParaBD();
-            this.showAlert();
 
 
 
@@ -44,14 +43,5 @@ export class MyApp {
     //     splashScreen.hide();
     //     this.rootPage = LoginPage;
     // }
-
-    showAlert() {
-        const alert = this.alertCtrl.create({
-            title: 'Informação!',
-            subTitle: 'INFO!',
-            buttons: ['OK']
-        });
-        alert.present();
-    }
 }
 

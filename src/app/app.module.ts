@@ -5,7 +5,6 @@ import {SplashScreen} from '@ionic-native/splash-screen';
 import {StatusBar} from '@ionic-native/status-bar';
 import {MyApp} from './app.component';
 import {HomePage} from '../pages/home/home';
-import {LoginPageModule} from "../pages/login/login.module";
 import {MenuPageModule} from "../pages/menu/menu.module";
 import {PerfilPageModule} from "../pages/perfil/perfil.module";
 import {TurmaPageModule} from "../pages/turma/turma.module";
@@ -23,18 +22,18 @@ import {AulaPageModule} from "../pages/aula/aula.module";
 import {AlunosPageModule} from "../pages/alunos/alunos.module";
 import {TabsPage} from "../pages/tabs/tabs";
 import {DadosalunoPageModule} from "../pages/dadosaluno/dadosaluno.module";
+import {LoginAppPageModule} from "../pages/login-app/login-app.module";
 
 @NgModule({
     declarations: [
         MyApp,
         HomePage,
         TabsPage,
-
     ],
+
     imports: [
         BrowserModule,
         IonicModule.forRoot(MyApp),
-        LoginPageModule,
         MenuPageModule,
         PerfilPageModule,
         TurmaPageModule,
@@ -44,14 +43,17 @@ import {DadosalunoPageModule} from "../pages/dadosaluno/dadosaluno.module";
         AulaPageModule,
         AlunosPageModule,
         DadosalunoPageModule,
+        LoginAppPageModule,
 
     ],
+
     bootstrap: [IonicApp],
     entryComponents: [
         MyApp,
         HomePage,
         TabsPage,
     ],
+
     providers: [
         StatusBar,
         SplashScreen,
@@ -64,9 +66,9 @@ import {DadosalunoPageModule} from "../pages/dadosaluno/dadosaluno.module";
         UnidadeProvider,
         CarregarBdProvider,
         TurmaProvider,
-
     ]
 })
+
 export class AppModule {
 
 }

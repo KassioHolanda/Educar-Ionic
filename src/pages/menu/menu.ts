@@ -30,6 +30,6 @@ export class MenuPage {
     }
 
     sair() {
-        this.navCtrl.push(LoginPage)
+        this.navCtrl.popToRoot()
     }
 }

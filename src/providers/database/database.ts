@@ -327,6 +327,7 @@ export class DatabaseProvider {
             this.db.executeSql("SELECT * FROM user;", []).then((data) => {
                 if (data.rows.length > 0) {
                     for (var i = 0; i < data.rows.length; i++) {
+                        console.log('nice');
                         this.users.push({
                             id: data.rows.item(i).id,
                             cpf: data.rows.item(i).cpf,

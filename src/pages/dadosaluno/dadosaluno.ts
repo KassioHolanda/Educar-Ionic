@@ -69,6 +69,7 @@ export class DadosalunoPage {
             inputs: [
                 {
                     name: 'ocorrencia',
+                    // type: 'textarea',
                     placeholder: 'Ocorrência: '
                 },
             ],
