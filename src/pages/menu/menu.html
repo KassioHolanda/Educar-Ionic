@@ -1,23 +1,31 @@
 <ion-menu [content]="content">
-    <ion-header>
-        <ion-toolbar>
-            <ion-title>Menu</ion-title>
-        </ion-toolbar>
-    </ion-header>
-    <ion-content>
+    <ion-content class="body">
+
+
+        <!--<img class="imagem-menu" src="assets/images/avatar-ts-woody.png"/>-->
+
+
         <ion-list>
-            <!--<button ion-item (click)="openPage(homePage)">-->
-            <!--Home-->
-            <!--</button>-->
-            <button ion-item>
+            <ion-item-divider class="body" (click)="voltar()" menu-close>
+                <ion-icon class="icon" name="arrow-dropleft-circle"></ion-icon>
+                Voltar
+            </ion-item-divider>
+
+            <ion-item-divider class="body" (click)="home()" menu-close>
+                <ion-icon class="icon" name="home"></ion-icon>
+                Inicio
+            </ion-item-divider>
+
+            <ion-item-divider class="body" menu-close>
+                <ion-icon class="icon" name="contact"></ion-icon>
                 Perfil
-            </button>
-            <button ion-item (click)='sair()'>
+            </ion-item-divider>
+
+            <ion-item-divider class="body" (click)='sair()' menu-close>
+                <ion-icon class="icon" name="exit"></ion-icon>
                 Sair
-            </button>
-            <!--<button ion-item (click)="closeMenu()">-->
-            <!--Close Menu-->
-            <!--</button>-->
+            </ion-item-divider>
+
         </ion-list>
     </ion-content>
 </ion-menu>

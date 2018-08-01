@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {NavController, NavParams, ToastController} from 'ionic-angular';
+import {App, NavController, NavParams, Platform, ToastController, ViewController} from 'ionic-angular';
 import {TurmaPage} from "../turma/turma";
 import {HttpClientModule} from "@angular/common/http";
 import {DataApiProvider} from "../../providers/data-api/data-api";
@@ -27,7 +27,9 @@ export class HomePage {
                 public dataProvider: DataApiProvider,
                 private toast: ToastController,
                 private unidadeProvider: UnidadeProvider,
-                public database: DatabaseProvider,) {
+                public database: DatabaseProvider,
+                public viewCtrl: ViewController,
+                public appCtrl: App,) {
 
         this.lista_unidades = [];
         this.database.getTodasUnidadesBD();
@@ -78,6 +80,8 @@ export class HomePage {
     }
 
     acessarTurmas(unidade) {
+        // this.viewCtrl.dismiss();
+        // this.appCtrl.getRootNav().push(TurmaPage, {'unidade': unidade});
         console.log('unidade: ' + unidade);
         this.navCtrl.push(TurmaPage, {'unidade': unidade})
     }

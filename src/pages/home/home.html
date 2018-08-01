@@ -3,11 +3,15 @@
         <button ion-button icon-only menuToggle>
             <ion-icon name="menu"></ion-icon>
         </button>
-        <ion-title>Unidades</ion-title>
+        <ion-title>
+            <span class="text-nav">Escolas</span>
+        </ion-title>
     </ion-toolbar>
-</ion-header>
-<ion-content>
     <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+</ion-header>
+
+<ion-content>
+    
     <ion-item-group>
         <ion-item-divider>Minhas Escolas</ion-item-divider>
         <ion-item *ngFor="let item of lista_unidades" (click)="acessarTurmas(item)">

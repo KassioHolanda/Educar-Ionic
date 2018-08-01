@@ -6,31 +6,48 @@
 -->
 <ion-header>
 
-    <ion-navbar>
-        <ion-title>Disciplina</ion-title>
-    </ion-navbar>
+    <ion-toolbar>
+        <button ion-button icon-only menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>
+            <span class="text-nav">Disciplina</span>
+        </ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only>
+                <ion-icon name="ios-information-circle"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-toolbar>
+    <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
 
 </ion-header>
 
 
 <ion-content>
-    <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
-    <ion-item-group>
-        <ion-item-divider>Selecione a Disciplina</ion-item-divider>
-        <!--<ion-item *ngFor="let item of listaDisciplinas" (click)='acessarAulaPage(item)'>-->
-        <!--{{ item.descricao }}-->
-        <!--</ion-item>-->
 
 
-        <ion-list>
-            <ion-item *ngFor="let item of listaDisciplinas" (click)='acessarAulaPage(item)'>
-                <ion-avatar item-start>
-                    <img src="assets/images/livros.png">
-                </ion-avatar>
-                <h2>{{ item.descricao }}</h2>
-                <!--<h3>Don't Know What To Do!</h3>-->
-                <!--<p>I've had a pretty messed up day. If we just...</p>-->
-            </ion-item>
-        </ion-list>
-    </ion-item-group>
+    <!--<ion-item-divider>Unidade: {{ nomeUnidade }}</ion-item-divider>-->
+    <!--<ion-item-divider>Turma: {{ nomeTurma }}</ion-item-divider>-->
+
+    <ion-row>
+        <ion-item align-items-center no-border col-6 no-padding *ngFor="let item of listaDisciplinas" style="margin: -15px"
+                  (click)='acessarAulaPage(item)'>
+
+            <!--<ion-avatar item-start>-->
+            <!--<img src="assets/images/livros.png">-->
+            <!--</ion-avatar>-->
+            <!--<h2>{{ item.descricao }}</h2>-->
+
+            <ion-card
+                    style="background-color: #3D5AFE; padding: 0px !important; text-align: center">
+                <ion-card-header>
+                    <span style="color:#fff; font-size: 40px; padding:auto">{{ item.descricao[0] }}</span>
+                </ion-card-header>
+                <ion-card-content>
+                    <span style="color:#fff">{{ item.descricao }}</span>
+                </ion-card-content>
+            </ion-card>
+        </ion-item>
+    </ion-row>
 </ion-content>

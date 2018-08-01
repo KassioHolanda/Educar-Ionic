@@ -5,17 +5,29 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
-    <ion-navbar>
-        <ion-title>Turma</ion-title>
-    </ion-navbar>
+    <ion-toolbar>
+        <button ion-button icon-only menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>
+            <span class="text-nav">Turma</span>
+        </ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only>
+                <ion-icon name="ios-information-circle"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-toolbar>
+    <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
 </ion-header>
 
 
 <ion-content>
-    <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+
     <ion-item-group>
-        <ion-item-divider>Turmas</ion-item-divider>
+        <ion-item-divider>Unidade: {{ unidadeSelecionadaNome }}</ion-item-divider>
+
+
         <ion-item *ngFor="let item of listaTurmas" (click)='acessarTurma(item)'>
             <ion-avatar item-start>
                 <img src="assets/images/livros.png">

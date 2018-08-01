@@ -27,15 +27,14 @@ export class TurmaPage {
 
     public listaTurmas = new Array<any>();
     public unidadeSelecionada;
+    public unidadeSelecionadaNome;
     public unidade;
     public model;
-
 
     constructor(public navCtrl: NavController,
                 public navParams: NavParams,
                 public dataApi: DataApiProvider,
-                public database: DatabaseProvider,
-    ) {
+                public database: DatabaseProvider,) {
 
     }
 
@@ -51,36 +50,17 @@ export class TurmaPage {
 
 
     acessarTurma(turma) {
-        this.navCtrl.push(DisciplinaPage, {'turma': turma})
+        this.navCtrl.push(DisciplinaPage, {'turma': turma, 'unidade': this.unidadeSelecionada})
     }
 
     ionViewDidLoad() {
         // console.log('ionViewDidLoad TurmaPage');
         this.unidadeSelecionada = this.navParams.get('unidade');
-        console.log('Unidade ID: ' + this.unidadeSelecionada.id);
+        this.unidadeSelecionadaNome = this.unidadeSelecionada.nome;
         this.database.getTurmasUnidadeBD(this.unidadeSelecionada.id);
         this.database.getTurmasBD();
         this.listaTurmas = this.database.geTurmas();
-        //
-        // this.dataApi.getTurmasUnidade(this.unidade_selecionada.pk).subscribe(data => {
-        //
-        //         console.log(this.unidade);
-        //         // this.lista_turmas =
-        //         console.log(this.lista_turmas);
-        //         this.unidade = data;
-        //         let lista_turmas = [];
-        //         this.lista_turmas = this.unidade.minhas_turmas;
-        //         for (var i = 0; i < lista_turmas.length; i++) {
-        //             this.model = new Turma();
-        //             // console.log('unidade' + i + ': ' + lista_turmas[i].descricao);
-        //             this.dataApi.getTurmasUnidade(this.unidade)
-        //         }
-        //
-        //
-        //     },
-        //     error =>
-        //         console.log(error)
-        // )
+
     }
 
 }

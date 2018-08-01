@@ -17,10 +17,20 @@ import {DatabaseProvider} from "../../providers/database/database";
 export class AulaPage {
     public listaAlunos: Array<any>;
     public turma;
+    public nomeDisciplina;
+    public nomeUnidade;
+    public nomeTurma;
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, public database: DatabaseProvider, public toast: ToastController) {
+    constructor(public navCtrl: NavController,
+                public navParams: NavParams,
+                public database: DatabaseProvider,
+                public toast: ToastController) {
         this.listaAlunos = [];
         this.turma = this.navParams.get('turma');
+        this.nomeDisciplina = this.navParams.get('disciplina').descricao;
+        this.nomeUnidade = this.navParams.get('unidade');
+        this.nomeTurma = this.turma.descricao;
+
     }
 
     ionViewDidLoad() {

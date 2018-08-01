@@ -1,0 +1,29 @@
+<ion-header no-border>
+    <ion-toolbar>
+        <ion-title>Header</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="body">
+    <div class="centralizar">
+        <div class="form">
+            <ion-list>
+                <ion-item class="input" style="margin: 10px; width: 95%">
+                    <ion-label floating>CPF</ion-label>
+                    <ion-input [(ngModel)]="login.cpf" type="number"></ion-input>
+                </ion-item>
+
+                <ion-item style="margin: 10px; width: 95%">
+                    <ion-label floating>Senha</ion-label>
+                    <ion-input type="password"></ion-input>
+                </ion-item>
+            </ion-list>
+        </div>
+        <div style="padding: 10px; padding-bottom: 35px">
+            <button ion-button style="background-color: #283593" (click)="acessar()" block>Acessar</button>
+        </div>
+        <!--<div style="padding: 10px; margin-top: 80px;">-->
+        <!--<button ion-button="" (click)="registrar()" block>Registrar</button>-->
+        <!--</div>-->
+    </div>
+</ion-content>

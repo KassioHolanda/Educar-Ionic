@@ -1,7 +1,8 @@
 import {Component} from '@angular/core';
-import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import {App, IonicPage, NavController, NavParams, ViewController} from 'ionic-angular';
 import {HomePage} from "../home/home";
-import {LoginPage} from '../login/login';
+
+// import {LoginPage} from '../login/login';
 
 /**
  * Generated class for the MenuPage page.
@@ -18,15 +19,23 @@ import {LoginPage} from '../login/login';
 export class MenuPage {
     rootPage = HomePage;
 
-    constructor(public navCtrl: NavController, public navParams: NavParams) {
+    constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public appCtrl: App) {
     }
 
     ionViewDidLoad() {
 
     }
 
+    voltar() {
+        // this.appCtrl.
+        this.navCtrl.pop();
+    }
+
     home() {
-        this.navCtrl.push(MenuPage)
+        // this.viewCtrl.dismiss();
+        // this.navCtrl.push(MenuPage)
+
+        // this.appCtrl.getRootNav().push(MenuPage);
     }
 
     sair() {

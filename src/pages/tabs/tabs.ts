@@ -21,8 +21,15 @@ export class TabsPage {
         this.tab1Root = AulaPage;
         this.tab2Root = AlunosPage;
 
-        this.tab1Params = {'disciplina': parametros.data.disciplina, 'turma': parametros.data.turma}
-        this.tab2Params = {'disciplina': parametros.data.disciplina, 'turma': parametros.data.turma}
-
+        this.tab1Params = {
+            'disciplina': parametros.data.disciplina,
+            'turma': parametros.data.turma,
+            'unidade': parametros.data.unidade
+        }
+        this.tab2Params = {
+            'disciplina': parametros.data.disciplina,
+            'turma': parametros.data.turma,
+            'unidade': parametros.data.unidade
+        }
     }
 }

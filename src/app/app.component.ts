@@ -13,7 +13,8 @@ import {LoginAppPage} from "../pages/login-app/login-app";
 export class MyApp {
     rootPage: any = LoginAppPage;
 
-    constructor(platform: Platform, statusBar: StatusBar,
+    constructor(platform: Platform,
+                statusBar: StatusBar,
                 public alertCtrl: AlertController,
                 splashScreen: SplashScreen,
                 dbProvider: DatabaseProvider,
@@ -33,7 +34,12 @@ export class MyApp {
             // dbProvider.getDisciplinasBD();
 
             statusBar.styleDefault();
-            splashScreen.hide();
+            statusBar.styleDefault();
+            if (platform.is('android')) {
+                statusBar.overlaysWebView(false);
+                statusBar.backgroundColorByHexString('#1A237E');
+            }
+            // splashScreen.hide();
         });
 
 

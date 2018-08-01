@@ -20,10 +20,17 @@ export class DisciplinaPage {
 
     public listaDisciplinas: Array<any>;
     public turma;
+    public nomeTurma;
+    public nomeUnidade;
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, public database: DatabaseProvider) {
-        this.listaDisciplinas = new Array<any>();
+    constructor(public navCtrl: NavController, 
+        public navParams: NavParams, 
+        public database: DatabaseProvider) {
+        
+        this.listaDisciplinas = [];
         this.turma = this.navParams.get('turma');
+        this.nomeTurma = this.turma.descricao;
+        this.nomeUnidade = this.navParams.get('unidade').nome;
         this.database.getDisciplinasBD();
         this.listaDisciplinas = this.database.getDisciplinas();
     }
@@ -43,7 +50,7 @@ export class DisciplinaPage {
     }
 
     acessarAulaPage(disciplina) {
-        this.navCtrl.push(TabsPage, {'disciplina': disciplina, 'turma': this.turma})
+        this.navCtrl.push(TabsPage, {'disciplina': disciplina, 'turma': this.turma, 'unidade': this.nomeUnidade})
     }
 
 }
