@@ -17,6 +17,7 @@ import {DatabaseProvider} from "../../providers/database/database";
 export class HomePage {
 
     // model: Unidade;
+    public isSearchOpened = false;
     public lista_unidades: Array<any>;
     searchQuery: string = '';
 

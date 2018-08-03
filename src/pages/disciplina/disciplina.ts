@@ -19,6 +19,7 @@ import {TabsPage} from "../tabs/tabs";
 export class DisciplinaPage {
 
     public listaDisciplinas: Array<any>;
+    public isSearchOpened = false;
     public turma;
     public nomeTurma;
     public nomeUnidade;

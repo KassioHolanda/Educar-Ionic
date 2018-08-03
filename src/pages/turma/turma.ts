@@ -25,6 +25,7 @@ import {DatabaseProvider} from "../../providers/database/database";
 })
 export class TurmaPage {
 
+    public isSearchOpened = false;
     public listaTurmas = new Array<any>();
     public unidadeSelecionada;
     public unidadeSelecionadaNome;
