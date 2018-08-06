@@ -9,7 +9,7 @@
             <span class="text-nav">Escolas</span>
         </ion-title>
 
-        <ion-searchbar *ngIf="isSearchOpened" (ionInput)="getItems($event)" (ionCancel)="isSearchOpened=false" [showCancelButton]="true"></ion-searchbar>
+        <ion-searchbar *ngIf="isSearchOpened" (ionInput)="getItems($event)" (ionCancel)="isSearchOpened=false" showCancelButton="true"></ion-searchbar>
 
         <ion-buttons end>
             <button ion-button icon-only *ngIf="!isSearchOpened" (click)="isSearchOpened=true">

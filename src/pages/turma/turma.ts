@@ -1,9 +1,10 @@
 import {Component} from '@angular/core';
-import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import {AlertController, IonicPage, NavController, NavParams, ToastController} from 'ionic-angular';
 import {DataApiProvider} from '../../providers/data-api/data-api';
 import {HttpClientModule} from "@angular/common/http";
 import {DisciplinaPage} from "../disciplina/disciplina";
 import {DatabaseProvider} from "../../providers/database/database";
+import {AlunosPage} from "../alunos/alunos";
 // import {Unidade} from "../home/home";
 // import {Turma} from "../../providers/turma/turma";
 
@@ -32,10 +33,21 @@ export class TurmaPage {
     public unidade;
     public model;
 
+    testRadioOpen: boolean;
+    testRadioResult;
+
+
+    public listaDisciplinas;
+
     constructor(public navCtrl: NavController,
                 public navParams: NavParams,
                 public dataApi: DataApiProvider,
-                public database: DatabaseProvider,) {
+                public database: DatabaseProvider,
+                private toastCtrl: ToastController,
+                public alertCtrl: AlertController) {
+
+        this.database.getDisciplinasBD();
+        this.listaDisciplinas = this.database.getDisciplinas();
 
     }
 
@@ -50,7 +62,7 @@ export class TurmaPage {
     }
 
 
-    acessarTurma(turma) {
+    acessarDisciplinas(turma) {
         this.navCtrl.push(DisciplinaPage, {'turma': turma, 'unidade': this.unidadeSelecionada})
     }
 
@@ -62,6 +74,21 @@ export class TurmaPage {
         this.database.getTurmasBD();
         this.listaTurmas = this.database.geTurmas();
 
+    }
+
+    mostrarInfo() {
+        let toast = this.toastCtrl.create({
+            message: `Unidade: ${this.unidadeSelecionadaNome}`,
+            // duration: 10000,
+            position: 'bottom',
+            closeButtonText: 'OK'
+        }).setShowCloseButton(true);
+
+
+        toast.onDidDismiss(() => {
+            console.log('Dismissed toast');
+        });
+        toast.present();
     }
 
 }

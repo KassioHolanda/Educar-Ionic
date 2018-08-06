@@ -24,7 +24,8 @@ export class AulaPage {
     constructor(public navCtrl: NavController,
                 public navParams: NavParams,
                 public database: DatabaseProvider,
-                public toast: ToastController) {
+                public toast: ToastController,
+                private toastCtrl: ToastController) {
         this.listaAlunos = [];
         this.turma = this.navParams.get('turma');
         this.nomeDisciplina = this.navParams.get('disciplina').descricao;
@@ -40,5 +41,20 @@ export class AulaPage {
 
     salvarAula() {
         this.toast.create({message: 'Aula Registrada...', duration: 3000, position: 'botton'}).present();
+    }
+
+    mostrarInfo() {
+        let toast = this.toastCtrl.create({
+            message: `Unidade: ${this.nomeUnidade}\nTurma: ${this.nomeTurma}\nDisciplina: ${this.nomeDisciplina}`,
+            // duration: 10000,
+            position: 'bottom',
+            closeButtonText: 'OK'
+        }).setShowCloseButton(true);
+
+
+        toast.onDidDismiss(() => {
+            console.log('Dismissed toast');
+        });
+        toast.present();
     }
 }

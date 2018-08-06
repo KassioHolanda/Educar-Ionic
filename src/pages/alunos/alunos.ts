@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {
-    ActionSheetController, AlertController, IonicPage, NavController, NavParams,
+    ActionSheetController, AlertController, IonicPage, NavController, NavParams, Platform,
     ToastController
 } from 'ionic-angular';
 import {DatabaseProvider} from "../../providers/database/database";
@@ -28,12 +28,22 @@ export class AlunosPage {
     public nomeDisciplina;
     public disciplina;
 
+    ordem: string = "freq";
+    isAndroid: boolean = false;
+
+    public isSearchOpened = false;
+
+
     constructor(public navCtrl: NavController,
                 public navParams: NavParams,
                 public database: DatabaseProvider,
                 public alertCtrl: AlertController,
+                platform: Platform,
                 public actionSheetCtrl: ActionSheetController,
                 private toastCtrl: ToastController) {
+
+        this.isAndroid = platform.is('android');
+
 
         this.listaAlunos = [];
         this.turma = this.navParams.get('turma');

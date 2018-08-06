@@ -4,20 +4,20 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
+<ion-header no-border>
 
-    <ion-toolbar>
+    <ion-navbar>
 
-        <button ion-button icon-only menuToggle *ngIf="!isSearchOpened">
-            <ion-icon name="menu"></ion-icon>
-        </button>
+        <!--<button ion-button icon-only menuToggle *ngIf="!isSearchOpened">-->
+        <!--<ion-icon name="menu"></ion-icon>-->
+        <!--</button>-->
 
         <ion-title *ngIf="!isSearchOpened">
             Disciplina
         </ion-title>
 
         <ion-searchbar *ngIf="isSearchOpened" (ionInput)="getItems($event)" (ionCancel)="isSearchOpened=false"
-                       [showCancelButton]="true"></ion-searchbar>
+                       showCancelButton="true"></ion-searchbar>
 
         <ion-buttons end>
             <button ion-button icon-only *ngIf="!isSearchOpened" (click)="isSearchOpened=true">
@@ -26,40 +26,28 @@
         </ion-buttons>
 
         <ion-buttons end *ngIf="!isSearchOpened">
-            <button ion-button icon-only>
+            <button ion-button icon-only (click)="mostrarInfo()">
                 <ion-icon name="ios-information-circle"></ion-icon>
             </button>
         </ion-buttons>
 
-    </ion-toolbar>
+    </ion-navbar>
 </ion-header>
 
 
 <ion-content>
 
+    <ion-item-group>
+        <ion-item-divider>Unidade: {{ nomeUnidade }}</ion-item-divider>
+        <ion-item-divider>Turma: {{ nomeTurma }}</ion-item-divider>
+        <ion-item-divider>Selecione uma Disciplina</ion-item-divider>
+        <ion-item *ngFor="let disciplina of listaDisciplinas" (click)='acessarAulaPage(disciplina)'>
 
-    <!--<ion-item-divider>Unidade: {{ nomeUnidade }}</ion-item-divider>-->
-    <!--<ion-item-divider>Turma: {{ nomeTurma }}</ion-item-divider>-->
+            <ion-avatar item-start>
+                <img src="assets/images/livros.png">
+            </ion-avatar>
+            <h2>{{ disciplina.descricao }}</h2>
 
-    <ion-row>
-        <ion-item align-items-center no-border col-6 no-padding *ngFor="let item of listaDisciplinas"
-                  style="margin: -15px"
-                  (click)='acessarAulaPage(item)'>
-
-            <!--<ion-avatar item-start>-->
-            <!--<img src="assets/images/livros.png">-->
-            <!--</ion-avatar>-->
-            <!--<h2>{{ item.descricao }}</h2>-->
-
-            <ion-card
-                    style="background-color: #3D5AFE; padding: 0px !important; text-align: center">
-                <ion-card-header>
-                    <span style="color:#fff; font-size: 40px; padding:auto">{{ item.descricao[0] }}</span>
-                </ion-card-header>
-                <ion-card-content>
-                    <span style="color:#fff">{{ item.descricao }}</span>
-                </ion-card-content>
-            </ion-card>
         </ion-item>
-    </ion-row>
+    </ion-item-group>
 </ion-content>

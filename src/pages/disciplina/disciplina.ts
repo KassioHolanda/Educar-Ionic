@@ -1,8 +1,9 @@
 import {Component} from '@angular/core';
-import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import {IonicPage, NavController, NavParams, ToastController} from 'ionic-angular';
 import {DatabaseProvider} from "../../providers/database/database";
 import {AulaPage} from "../aula/aula";
 import {TabsPage} from "../tabs/tabs";
+import {AlunosPage} from "../alunos/alunos";
 
 /**
  * Generated class for the DisciplinaPage page.
@@ -24,10 +25,11 @@ export class DisciplinaPage {
     public nomeTurma;
     public nomeUnidade;
 
-    constructor(public navCtrl: NavController, 
-        public navParams: NavParams, 
-        public database: DatabaseProvider) {
-        
+    constructor(public navCtrl: NavController,
+                public navParams: NavParams,
+                public database: DatabaseProvider,
+                private toastCtrl: ToastController) {
+
         this.listaDisciplinas = [];
         this.turma = this.navParams.get('turma');
         this.nomeTurma = this.turma.descricao;
@@ -51,7 +53,22 @@ export class DisciplinaPage {
     }
 
     acessarAulaPage(disciplina) {
-        this.navCtrl.push(TabsPage, {'disciplina': disciplina, 'turma': this.turma, 'unidade': this.nomeUnidade})
+        this.navCtrl.push(AlunosPage, {'disciplina': disciplina, 'turma': this.turma, 'unidade': this.nomeUnidade})
+    }
+
+    mostrarInfo() {
+        let toast = this.toastCtrl.create({
+            message: `Unidade: ${this.nomeUnidade}\nTurma: ${this.nomeTurma}`,
+            // duration: 10000,
+            position: 'bottom',
+            closeButtonText: 'OK'
+        }).setShowCloseButton(true);
+
+
+        toast.onDidDismiss(() => {
+            console.log('Dismissed toast');
+        });
+        toast.present();
     }
 
 }
